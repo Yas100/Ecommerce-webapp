@@ -1,7 +1,7 @@
 import imp
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import CustomerViewSet, ProductViewSet, CategoryViewSet, OrderViewSet
+from .views import CustomerViewSet, ProductViewSet, CategoryViewSet, OrderViewSet, UserViewSet
 from store import views
 from .views import MyTokenObtainPairView
 
@@ -14,6 +14,7 @@ app_name = 'store'
 
 router = DefaultRouter()
 
+router.register('user', UserViewSet, basename='user')
 router.register('customer', CustomerViewSet, basename='customer')
 router.register('product', ProductViewSet, basename='product')
 router.register('category', CategoryViewSet, basename='category')

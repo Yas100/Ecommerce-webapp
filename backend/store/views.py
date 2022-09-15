@@ -4,7 +4,7 @@ from .models.customer import Customer
 from .models.category import Category
 from .models.orders import Order
 from .models.product import  Product
-from .serislizers import CustomerSerializers, ProductSerializers, CategorySerializers, OrderSerializers
+from .serislizers import CustomerSerializers, ProductSerializers, CategorySerializers, OrderSerializers, UserSerializers
 
 from django.http import JsonResponse
 from rest_framework import permissions
@@ -12,6 +12,7 @@ from rest_framework.response import Response
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth.models import User
 
 
 
@@ -26,6 +27,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+class UserViewSet(ModelViewSet):
+        queryset = User.objects.all()
+        serializer_class = UserSerializers
 
 class CustomerViewSet(ModelViewSet):
         queryset = Customer.objects.all()
