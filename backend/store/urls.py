@@ -1,7 +1,7 @@
 import imp
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import CustomerViewSet, ProductViewSet, CategoryViewSet, OrderViewSet
+from .views import  ProductViewSet, CategoryViewSet, OrderViewSet, RegisterViewSet
 from store import views
 from .views import MyTokenObtainPairView
 
@@ -14,10 +14,10 @@ app_name = 'store'
 
 router = DefaultRouter()
 
-router.register('customer', CustomerViewSet, basename='customer')
 router.register('product', ProductViewSet, basename='product')
 router.register('category', CategoryViewSet, basename='category')
 router.register('order', OrderViewSet, basename='order')
+router.register('user', RegisterViewSet, basename='user')
 
 
 urlpatterns = router.urls
